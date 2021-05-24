@@ -1,0 +1,26 @@
+{% extends "routList/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="listGrid">
+        <h1 class="Title">Finished Routs</h1>
+        <h1 class="Title">In Progress</h1>
+        <section class="List">
+            {% for rout in routs %}
+                {% if rout.climbed == "y" %}
+                    <a class="rout" href="{% url 'rout-detail' rout.id %}">
+                        {{ rout.rout_name }} : {{ rout.grade }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </section>
+        <section class="List">
+            {% for rout in routs %}
+                {% if rout.climbed == "n" %}
+                    <a class="rout" href="{% url 'rout-detail' rout.id %}">
+                        {{ rout.rout_name }} : {{ rout.grade }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+{% endblock content %}

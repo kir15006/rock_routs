@@ -1,0 +1,25 @@
+{% extends "routList/base.html" %}
+{% load static %}
+{% block content %}
+<div class="listGrid">
+        <h1 class="Title">{{ object.rout_name }} <a id="edit" href="{% url 'rout-update' rout.id %}">Edit Rout</a></h1>
+        <h1 class="Title"></h1>
+        <section class="List">
+            <div class="rout">
+                <p>Grade: {{ object.grade }}</p>
+                <p>Setter: {{ object.setter}}</p>
+                <p>Set on: {{ object.date_set }}</p>
+                {% if rout.climbed == 'y' %}
+                    <p>Climbed: {{ object.date_climbed }}</p>
+                    <p>Attempts: {{ object.attempts }}</p>
+                {% else %}
+                    <p>Not Climbed Yet</p>
+                {% endif %}
+                <p>NOTES:<br>{{ object.notes }}</p>
+            </div>
+        </section>
+        <section class="picture">
+            <img src="{% static 'images/rout_picture.jpg' %}" alt="">
+        </section>
+</div>
+{% endblock content %}
